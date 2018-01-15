@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Keyboard} from 'react-native'
-import styles from '../Stylesheets/stylesheet';
+import styles from '../Stylesheets/main';
 import { getBiodata } from '../Utils/RestApiService';
 import { Text, View, TextInput, TouchableHighlight, ActivityIndicator } from 'react-native';
 
@@ -67,7 +67,7 @@ export default class Main extends Component {
         <ActivityIndicator
           animating={this.state.isLoading}
           color="#111"
-          size="large"/>
+          size={this.state.isLoading ? "large" : 0}/>
         {showError}
       </View>
     );

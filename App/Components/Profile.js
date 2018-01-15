@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import { View, Text, Image, ScrollView } from 'react-native'
 import Badge from './Badge'
 import styles from '../Stylesheets/profile'
+import Separator from './Separator'
 
 class Profile extends Component {
     static navigationOptions = {
@@ -18,7 +20,7 @@ class Profile extends Component {
         var topicArr = ['company', 'location', 'followers', 'following', 'email', 'bio', 'public_repos']
         var list = topicArr.map((item, index) => {
             if(!userInfo[item]) {
-                return <View key={index} />
+                return (<View key={index} />)
             } else {
                 return (
                     <View key={index}>
@@ -26,6 +28,7 @@ class Profile extends Component {
                             <Text style={styles.rowTitle}>{this.getRowTitle(item)}</Text>
                             <Text styel={styles.rowContent}>{userInfo[item]}</Text>
                         </View>
+                        <Separator />
                     </View>
                 )
             }
@@ -37,6 +40,10 @@ class Profile extends Component {
             </ScrollView>
         )
     }
+}
+
+Profile.propTypes = {
+    userInfo: PropTypes.object
 }
 
 export default Profile
